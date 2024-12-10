@@ -8,11 +8,26 @@
 
 # wybor_potrawy = str(input("Podaj nazwę potrawy, a wyświetli się lista potrzebnych składników: "))
 # print(wybor_potrawy)
-potrawy = {"spaghetti": ["makaron", "mięso", "sos"], "pomidorówka": ["makaron", "rosół_z_wczoraj"]}
+potrawy = {"spaghetti": ["makaron", "mięso", "sos"], "pomidorówka": ["makaron", "rosół_z_wczoraj"], "jajecznica": ["jajka", "masło"], "żurek": ["żur", "jajka", "kiełbasa"]} 
+lista_potraw = []  
+for klucz in potrawy:
+    lista_potraw.append(klucz)
+lista_potraw = ', '.join(lista_potraw)
+print(lista_potraw)
+potrawa = input('Podaj nazwę potrawy spośród ' + lista_potraw + ': ')
+istnieje = False
+for klucz in potrawy:
+    if klucz == potrawa:
+        istnieje = True 
 
-potrawa = input("Podaj nazwę potrawy: ")
-spaghetti = potrawy[potrawa]
-print(spaghetti)
+
+if istnieje == True:
+    skladniki = potrawy[potrawa]
+    print(skladniki)
+else:
+    print("nie znam takiej potrawy")
+
+
 
 
 
