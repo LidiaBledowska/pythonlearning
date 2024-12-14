@@ -11,3 +11,10 @@ def is_key_exist (meals, meal):
         if key == meal:
             exist = True 
     return exist
+
+def get_result (meals, meal, exist):
+    if exist == True:
+        ingredients = str(meals[meal])
+        return ingredients
+    else:
+        return "i don't know"
