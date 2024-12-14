@@ -1,8 +1,10 @@
 def get_meals_keys (meals):
-    list_meals = []  
+    list_meals = []
     for key in meals:
         list_meals.append(key)
-    return list_meals
+    return ', '.join(list_meals) 
+
+
 
 
 def is_key_exist (meals, meal):
