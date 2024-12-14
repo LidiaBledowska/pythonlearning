@@ -8,26 +8,31 @@
 
 # wybor_potrawy = str(input("Podaj nazwę potrawy, a wyświetli się lista potrzebnych składników: "))
 # print(wybor_potrawy)
-potrawy = {"spaghetti": ["makaron", "mięso", "sos"], "pomidorówka": ["makaron", "rosół_z_wczoraj"], "jajecznica": ["jajka", "masło"], "żurek": ["żur", "jajka", "kiełbasa"]} 
-lista_potraw = []  
-for klucz in potrawy:
-    lista_potraw.append(klucz)
+
+from fun import get_meals_keys
+from fun import is_key_exist
+
+
+meals = {"spaghetti": ["makaron", "mięso", "sos"], "pomidorówka": ["makaron", "rosół_z_wczoraj"], "jajecznica": ["jajka", "masło"], "żurek": ["żur", "jajka", "kiełbasa"]} 
+
+lista_potraw = get_meals_keys(meals)
 lista_potraw = ', '.join(lista_potraw)
-print(lista_potraw)
-potrawa = input('Podaj nazwę potrawy spośród ' + lista_potraw + ': ')
-istnieje = False
-for klucz in potrawy:
-    if klucz == potrawa:
-        istnieje = True 
+
+meal = input('Podaj nazwę potrawy spośród ' + lista_potraw + ': ')
 
 
-if istnieje == True:
-    skladniki = potrawy[potrawa]
-    print(skladniki)
+exist = is_key_exist(meals, meal)
+if exist == True:
+    ingredients = meals[meal]
+    print(ingredients)
 else:
-    print("nie znam takiej potrawy")
+    print("i don't know")
 
 
+#1. przygotuj funkcje która zwróci liczbe kluczy w slowniku + musi przyjmowac jako argument def moja_funkcja(slownik) i ma zwrocic liste kluczy
+#2. napisz funkcje ktora sprawdza czy klucz istnieje
+#3. napisz funkcje ktora wypisuje skladniki potrawy jesli istnieje ale jesli nie to pisze ze nie istnieje
+#4. uzyj tych funkcji aby progra zachowywal sie tak samo jak do tej pory 
 
 
 
