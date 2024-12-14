@@ -5,6 +5,7 @@ from fun import is_key_exist
 
 
 
+
 meals_2 = {"spaghetti": ["makaron", "mięso", "sos"], "pomidorówka": ["makaron", "rosół_z_wczoraj"], "jajecznica": ["jajka", "masło"], "żurek": ["żur", "jajka", "kiełbasa"]} 
 variable = True 
 while variable == True:
@@ -17,7 +18,7 @@ while variable == True:
         user_ingredients = user_ingredients.split(', ')
         meals_2[name_meal] = user_ingredients
     elif choice == '4':
-        print(meals_2)
+        print(get_meals_keys(meals_2))
         name_meal = input("Podaj nazwę potrawy, którą chcesz zmienić: ")
         if is_key_exist(meals_2, name_meal):
             name_change_meal = input("Podaj nową nazwę potrawy: ")
@@ -28,10 +29,14 @@ while variable == True:
         else:
             print("Nie ma takiej potrawy.")
     elif choice == '5':
-        print(meals_2)
+        print(get_meals_keys(meals_2))
         name_meal = input("Podaj nazwę potrawy, która ma zostać usunięta: ")
-        del meals_2[name_meal]
-    # elif choice == '6':
+        if is_key_exist(meals_2, name_meal):
+            del meals_2[name_meal]
+        else: 
+            print("Nie ma takiej potrawy, podaj inną")
+    elif choice == '6':
+        print(get_meals_keys(meals_2))
     elif choice == '3':
         variable = False
         print("Koniec programu")
