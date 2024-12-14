@@ -1,8 +1,10 @@
 from fun import *
 from task1 import show_ingredients 
 from fun2 import *
+from pg import get_meals_from_db
 
-meals_2 = {"spaghetti": ["makaron", "mięso", "sos"], "pomidorówka": ["makaron", "rosół_z_wczoraj"], "jajecznica": ["jajka", "masło"], "żurek": ["żur", "jajka", "kiełbasa"]} 
+# meals_2 = {"spaghetti": ["makaron", "mięso", "sos"], "pomidorówka": ["makaron", "rosół_z_wczoraj"], "jajecznica": ["jajka", "masło"], "żurek": ["żur", "jajka", "kiełbasa"]} 
+meals_2 = get_meals_from_db()
 variable = True 
 while variable == True:
     choice = input('Napisz:\n 1 jeśli chcesz wybrać potrawę wraz ze składnikami, \n 2 jeśli chcesz dodać swoją potrawę wraz ze składnikami, \n 3 jeśli program ma zakończyć działanie, \n 4 jeśli chcesz zmienić potrawy w słowniku, \n 5 jeśli chcesz usunąć potrawę ze słownika, \n 6 jeśli chcesz zobaczyć listę potraw po wprowadzonych zmianach \n: ')
@@ -21,4 +23,5 @@ while variable == True:
         print("Koniec programu")
     else:
         print("Nieprawidłowa cyfra. Podaj cyfrę 1 lub 2.")
+
 
