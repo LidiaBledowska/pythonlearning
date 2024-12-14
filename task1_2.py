@@ -1,13 +1,14 @@
 
 from fun import get_meals_keys
 from task1 import show_ingredients
+from fun import is_key_exist 
 
 
 
 meals_2 = {"spaghetti": ["makaron", "mięso", "sos"], "pomidorówka": ["makaron", "rosół_z_wczoraj"], "jajecznica": ["jajka", "masło"], "żurek": ["żur", "jajka", "kiełbasa"]} 
 variable = True 
 while variable == True:
-    choice = input('Napisz 1 jeśli chcesz wybrać potrawę wraz ze składnikami, 2 jeśli chcesz dodać swoją potrawę wraz ze składnikami, 3 jeśli program ma zakończyć działanie, 4 jeśli chcesz zmienić potrawy w słowniku.')
+    choice = input('Napisz:\n 1 jeśli chcesz wybrać potrawę wraz ze składnikami, \n 2 jeśli chcesz dodać swoją potrawę wraz ze składnikami, \n 3 jeśli program ma zakończyć działanie, \n 4 jeśli chcesz zmienić potrawy w słowniku \n: ')
     if choice == '1':
         show_ingredients(meals=meals_2)
     elif choice == '2':
@@ -18,11 +19,14 @@ while variable == True:
     elif choice == '4':
         print(meals_2)
         name_meal = input("Podaj nazwę potrawy, którą chcesz zmienić: ")
-        name_change_meal = input("Podaj nową nazwę potrawy: ")
-        user_ingredients = input("Podaj składniki do zaktuazliowanej potrawy oddzielone spacją i przecinkiem np. mleko, jajka, mąka: ")
-        user_ingredients = user_ingredients.split(', ')
-        del meals_2[name_meal]
-        meals_2[name_change_meal] = user_ingredients
+        if is_key_exist(meals_2, name_meal):
+            name_change_meal = input("Podaj nową nazwę potrawy: ")
+            user_ingredients = input("Podaj składniki do zaktuazliowanej potrawy oddzielone spacją i przecinkiem np. mleko, jajka, mąka: ")
+            user_ingredients = user_ingredients.split(', ')
+            del meals_2[name_meal]
+            meals_2[name_change_meal] = user_ingredients
+        else:
+            print("Nie ma takiej potrawy.")
     elif choice == '3':
         variable = False
         print("Koniec programu")
