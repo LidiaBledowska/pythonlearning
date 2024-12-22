@@ -1,6 +1,8 @@
 from task1 import show_ingredients
 from fun import get_meals_keys
 from fun import is_key_exist
+from pg import  delete_row
+from pg import select_query
 
 def create_meal(meals):
     name_meal = input("Podaj nazwę potrawy: ")
@@ -25,8 +27,14 @@ def update_meal(meals_2):
 
 def delete_meal(meals_2):
     print(get_meals_keys(meals_2))
-    name_meal = input("Podaj nazwę potrawy, która ma zostać usunięta: ")
-    if is_key_exist(meals_2, name_meal):
-        del meals_2[name_meal]
+    name_meal_from_user = input("Podaj nazwę potrawy, która ma zostać usunięta: ")
+    if is_key_exist(meals_2, name_meal_from_user):
+        del meals_2[name_meal_from_user]
+        #todo: show whole table
+        meals_from_db = select_query('id, name', 'meals')
+        for row in meals_from_db:
+             id  = row[0]
+             if name_meal_from_user == row[1]:
+                delete_row('meals', id)
     else: 
         print("Nie ma takiej potrawy, podaj inną")
