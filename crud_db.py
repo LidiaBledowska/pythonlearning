@@ -1,6 +1,6 @@
 import psycopg
 
-def select_query(what_columns, table):
+def select_query_db(what_columns, table):
     try:
         connection = psycopg.connect(
             dbname='meals_and_ingredients',
@@ -22,7 +22,7 @@ def select_query(what_columns, table):
             connection.close()
             print("Połączenie zamknięte.")
 
-def delete_row(table, id):
+def delete_row_db(table, id):
     try:
         connection = psycopg.connect(
         dbname='meals_and_ingredients',
@@ -43,8 +43,8 @@ def delete_row(table, id):
             connection.close()
             print("Połączenie zostało zamknięte.")
 
-def get_meals_from_db():
-    list_meals = select_query('name, ingredients', 'meals')
+def get_ingredients_from_db():
+    list_meals = select_query_db('name, ingredients', 'meals')
     dict_meals = {}
     for meal in list_meals:
         key = meal[0]
@@ -54,4 +54,4 @@ def get_meals_from_db():
 
 
 def delete_meals_from_db():
-    list_meals = select_query
+    list_meals = select_query_db
